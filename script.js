@@ -17,7 +17,7 @@ const inventors = [
   // 1. Filter the array of inventors into a new array containing only the inventors born in the 1500's
 
 const inventorsBorn1500s = inventors.filter(inventor => inventor.year >= 1500 && inventor.year < 1600)
-// console.log(inventorsBorn1500s)
+console.log(inventorsBorn1500s)
 
 
   // Array.prototype.map()
@@ -27,19 +27,19 @@ const inventorsBorn1500s = inventors.filter(inventor => inventor.year >= 1500 &&
 const inventorNames = inventors.map(names => {
   return {first: names.first, last: names.last}
 })
-// console.log(inventorNames)
+console.log(inventorNames)
 
   // Array.prototype.sort()
   // 3. Sort the inventors by birth date (year property), in ascending order
   
   inventors.sort((a, b) => a.year - b.year)
-  // console.log(inventors)
+  console.log(inventors)
   
   // Array.prototype.find()
   // 4. Find the inventor object with the first name of 'Ada'
   
   const nameAda = inventors.find((inventor) => inventor.first === 'Ada')
-  // console.log(nameAda)
+  console.log(nameAda)
   
   // Array.prototype.reduce()
   // 5. How many years did all the inventors live?
@@ -47,7 +47,7 @@ const inventorNames = inventors.map(names => {
   const sumYearsLived = inventors.reduce((sum, inventor) => {
     return sum + (inventor.passed - inventor.year);
   }, 0);
-  // console.log(sumYearsLived)
+  console.log(sumYearsLived)
 
   const people = [
     'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry',
@@ -67,13 +67,11 @@ const inventorNames = inventors.map(names => {
   // 6. Map the people array such that the new array consists of strings with the names formatted as "First Last", e.g., "Becker, Carl" should be mapped to "Carl Becker".
   // Hint: As a start, consider using the String.prototype.split method to "split" the string using ', ' as the separator
   
-  const newPeople = people.map(function(str){
-    return str.split(', ')
+  const newPeople = people.map(function(name){
+    const [last, first] = name.split(', ');
+    return `${first} ${last}`;
   })
-  
-  
-
-
+  console.log(newPeople)
 
 
   const data = [
@@ -89,15 +87,32 @@ const inventorNames = inventors.map(names => {
     acc[vehicle] = (acc[vehicle] || 0) + 1;
     return acc;
   },{} )
-  // console.log(vehicleCount)
+  console.log(vehicleCount)
 
+  const devs = [
+    { name: 'Wes', year: 1988 },
+    { name: 'Kait', year: 1986 },
+    { name: 'Irv', year: 1970 },
+    { name: 'Lux', year: 2015 }
+  ];
+  
+  // Array.prototype.some()
+  // 8. Check if at least one person is 19 or older?
+  // Hint: To get today's year, use the getFullYear method of new Date(), i.e., new Date().getFullYear()
+  const is19 = devs.some(function(dev){
+    const currentYear = new Date().getFullYear()
+    return currentYear - dev.year >= 19
+  })
+  console.log(is19)
+  
+  // Array.prototype.every()
+  // 9. Check if everyone is 19 or older?
 
-
-
-
-
-
-
+  const is19OrOlder = devs.every(function(dev){
+    const thisYear = new Date().getFullYear()
+    return thisYear - dev.year >= 19
+  })
+  console.log(is19OrOlder)
 
 
 
@@ -113,10 +128,10 @@ const inventorNames = inventors.map(names => {
   // 10. Find the comment with the id of 823423
   
   const findId = comments.find((comment) => comment.id === 823423)
-  // console.log(findId)
+  console.log(findId)
   // Array.prototype.findIndex()
   // 11. Find the index of the comment with an id of 123523
 
   const commentId = 123523;
   const findIdx = comments.findIndex(comment => comment.id === commentId);
-  // console.log(findIdx)
+  console.log(findIdx)
