@@ -67,6 +67,10 @@ const inventorNames = inventors.map(names => {
   // 6. Map the people array such that the new array consists of strings with the names formatted as "First Last", e.g., "Becker, Carl" should be mapped to "Carl Becker".
   // Hint: As a start, consider using the String.prototype.split method to "split" the string using ', ' as the separator
   
+  const newPeople = people.map(function(str){
+    return str.split(', ')
+  })
+  
   
 
 
@@ -115,4 +119,4 @@ const inventorNames = inventors.map(names => {
 
   const commentId = 123523;
   const findIdx = comments.findIndex(comment => comment.id === commentId);
-  console.log(findIdx)
+  // console.log(findIdx)
